@@ -28,6 +28,7 @@ export function Gallery({ images }: GalleryProps) {
 							sm:rounded-lg overflow-hidden ">
 								<Image 
 									fill
+									sizes="100%"
 									src={image.url}
 									alt='image'
 									className="object-cover object-center"

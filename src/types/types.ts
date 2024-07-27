@@ -14,7 +14,10 @@ export interface Product {
 	category: Category;
 	name: string;
 	price: string;
+	newprice: string;
 	isFeatured: boolean;
+	onCarousel: boolean;
+	onSale: boolean;
 
 	size: Size;
 	images: Image[];

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+			clipPath: {
+				custom: 'inset(0 0 0 40%)',
+			},
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -59,6 +62,21 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+				// slideClip: {
+        //   '0%': { 'clip-path': 'inset(0 0 0 0)' },
+        //   '100%': { 'clip-path': 'inset(0 0 0 40%)' }, // Moves the left side of the image to the right
+        // },
+				// slideClipReverse: {
+        //   '0%': { 'clip-path': 'inset(0 0 0 40%)' },
+        //   '100%': { 'clip-path': 'inset(0 0 0 0)' },
+        // },
+				arrowToRightGrow: {
+          '90%, 100%': { flexGrow: '1' },
+        },
+				arrowToRightWidth: {
+					'0%': { width: '0' },
+					'100%': { width: '100%' },
+				},
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -71,10 +89,22 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+				// slideClip: 'slideClip .75s ease-in-out forwards',
+				// slideClipReverse: 'slideClipReverse 1s ease-in-out forwards',
+				animationArrowToRightWidth: 'arrowToRightWidth 1.5s ease-out',
       },
+			
     },
+		variants: {
+			extend: {
+				animation: ['hover', 'focus'],
+			},
+		}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+		require("tailwindcss-animate"), 
+		require('tailwind-clip-path')
+	],
 } satisfies Config
 
 export default config

@@ -9,9 +9,10 @@ export const formatter = new Intl.NumberFormat("en-Us", {
 
 interface CurrencyProps {
 	value?: string | number;
+	oldprice?: boolean;
 }
 
-export function Currency({ value }: CurrencyProps) {
+export function Currency({ value, oldprice }: CurrencyProps) {
 
 	const [isMounted, setIsMounted] = useState(false);
 
@@ -22,7 +23,9 @@ export function Currency({ value }: CurrencyProps) {
 	if (!isMounted) return null;
 
 	return (
-		<div className="font-semibold">
+		<div className={`font-medium text-[1.1rem]  dark:text-neutral-300
+			${oldprice && "line-through text-neutral-500 dark:text-neutral-600 "} `}
+>
 			{formatter.format(Number(value))}
 		</div>
 	)

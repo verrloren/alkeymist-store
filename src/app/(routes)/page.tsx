@@ -1,26 +1,95 @@
-import Billboard from "@/components/billboard";
 import { Container } from "@/components/ui/container";
-import getBillboard from "../../../actions/get-billboard";
 import getProducts from "../../../actions/get-products";
 import { ProductList } from "@/components/product-list";
 import Footer from "@/components/footer";
+import CarouselClient from "@/components/carousel-client";
+import { CategoriesList } from "@/components/categories-list";
+import { Separator } from "@radix-ui/react-dropdown-menu";
+import getCategories from "../../../actions/get-categories";
+import { Carousel, CarouselContent } from "@/components/ui/carousel";
+import { HorizontalScroll } from "@/components/horizontal-scroll";
+import { GroupbuyCard } from "@/components/ui/groupbuy-card";
+import { PreorderCard } from "@/components/ui/preorder-card";
+import { SalesList } from "@/components/sales-list";
+import { AccordionClient } from "@/components/accordion-client";
+import { Faq } from "@/components/faq";
+import { Heart, HelpCircle, HelpingHand, HelpingHandIcon, Truck } from "lucide-react";
+import { FillingInfo } from "@/components/filling-info";
 
 export const revalidate = 0;
 
 export default async function HomePage() {
+  const products = await getProducts({ isFeatured: true });
+  const productsCarousel = await getProducts({ onCarousel: true });
+  const productsOnSale = await getProducts({ onSale: true });
+  const categories = await getCategories();
 
-	const billboard = await getBillboard("b43a922b-2ea9-4754-9d02-24d95f88a9ea");
-	const products = await getProducts({ isFeatured: true });
+	console.log(products);
+	
 
-	return (
-		<Container>
-			<div className="space-y-10 pb-10">
-				<Billboard data={billboard} />
-				<div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-					<ProductList title="Featured products" items={products} />
-				</div>
-			</div>
-			<Footer />
-		</Container>
-	)
+  return (
+    <div className="bg-neutral-50 dark:bg-gradient-to-b 
+		dark:from-[#070707] dark:to-neutral-950">
+      <Container>
+        {/* CAROUSEL */}
+        <div className="flex items-center justify-center">
+          <CarouselClient productsCarousel={productsCarousel} />
+        </div>
+
+        {/* CATEGORIES */}
+        <div className="mt-3 w-full xl:px-0 px-3 ">
+          <CategoriesList categories={categories} />
+        </div>
+
+        {/* FEATURED */}
+        <div className="my-4 mt-20 w-full">
+          <div className="flex flex-col gap-y-0 px-2 xl:px-0">
+            <div className="flex flex-col space-y-10">
+              <h1 className="text-5xl font-semibold dark:text-neutral-100">
+                Featured Products
+              </h1>
+              <ProductList items={products} />
+            </div>
+
+            {/* SALE */}
+
+            <div className="my-4 mt-20 flex w-full flex-col space-y-10 pb-10">
+              <h1 className="text-5xl font-semibold dark:text-neutral-100">
+                On Sale
+              </h1>
+              <SalesList items={productsOnSale} />
+            </div>
+
+            {/* GROUP BUY & PRE ORDERS */}
+
+            {/* <div className="my-4 mt-20 flex w-full flex-col space-y-10 pb-10">
+              <h1 className="text-5xl font-semibold dark:text-neutral-100">
+                Group-Buys & Pre-Orders
+              </h1>
+
+              <div className="grid grid-cols-1 justify-evenly gap-4 md:grid-cols-2 lg:gap-8">
+                <PreorderCard
+                  headerText="Pre-orders"
+                  imgSrc="/keeb_assets/preorder-curved.svg"
+                />
+                <PreorderCard
+                  headerText="Group-buys"
+                  imgSrc="/keeb_assets/groupbuy.png"
+                />
+              </div>
+            </div> */}
+
+            {/* INFO SECTION */}
+
+            <Faq />
+
+						<FillingInfo />
+
+						
+          </div>
+        </div>
+      </Container>
+      <Footer />
+    </div>
+  );
 }

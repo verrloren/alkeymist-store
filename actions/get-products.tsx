@@ -8,6 +8,8 @@ interface Query {
 	categoryId?: string;
 	sizeId?: string;
 	isFeatured?: boolean;
+	onCarousel?: boolean;
+	onSale?: boolean;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -17,7 +19,9 @@ const getProducts = async (query: Query): Promise<Product[]> => {
 		query: {
 			sizeId: query.sizeId,
 			categoryId: query.categoryId,
-			isFeatured: query.isFeatured
+			isFeatured: query.isFeatured,
+			onCarousel: query.onCarousel,
+			onSale: query.onSale,
 		}
 	})
 
@@ -26,7 +30,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
 			"Content-Type": "application/json",
 		},
 	});
-
+	
 	return res.data; // Extract the data from the Axios response and return it as an array of categories
 }
 

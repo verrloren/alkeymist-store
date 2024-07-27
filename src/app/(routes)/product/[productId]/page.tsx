@@ -20,21 +20,21 @@ export default async function ProductPage({ params }: PageProps) {
 	})
 
 	return (
-		<div className="my-6">
+		<div className="bg-neutral-50 dark:bg-[#070707] pt-0">
 			<Container>
-				<div className="px-4 pyp-10 sm:px-6 lg:px-8">
-					<div className="md:grid md:grid-cols-2 md:gap-x-8">
+				<div className="px-4  py-12 sm:px-6 lg:px-0">
+					<div className="md:grid md:grid-cols-2 md:gap-x-16">
 						{/* GALLERY */}
 						<Gallery images={product.images} />
-						<div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
+						<div className=" px-4  sm:px-0 lg:mt-0">
 							{/* INFO */}
 							<Info data={product} />
 						</div>
 					</div>
 
-					<hr className="my-10" />
 
-					<ProductList title="Related Items" items={suggestedProducts} />
+					<h1 className="mt-14 pb-4 text-5xl font-semibold">You may also like</h1>
+					<ProductList items={suggestedProducts} />
 				</div>
 			</Container>
 		</div>

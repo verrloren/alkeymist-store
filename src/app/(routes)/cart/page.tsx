@@ -1,47 +1,52 @@
-'use client'
+"use client";
 
-import { Container } from "@/components/ui/container"
-import useCart from "@/hooks/use-cart"
-import { useEffect, useState } from "react"
-import { CartItem } from "./components/cart-item"
-import Summary from "./components/summary"
+import { Container } from "@/components/ui/container";
+import useCart from "@/hooks/use-cart";
+import { useEffect, useState } from "react";
+import { CartItem } from "./components/cart-item";
+import Summary from "./components/summary";
+import Footer from "@/components/footer";
+import { Cross1Icon } from "@radix-ui/react-icons";
+import Image from "next/image";
 
 interface CartPageProps {}
 
 export default function CartPage({}: CartPageProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  const cart = useCart();
 
-	const [isMounted, setIsMounted] = useState(false)
-	const cart = useCart();
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
+  if (!isMounted) return null;
 
-	useEffect(() => {
-		setIsMounted(true)
-	}, [])
+  return (
+    <>
+      <div className="w-full min-h-[85svh] bg-neutral-50 dark:bg-[#070707]">
+        <Container>
+          <div className="w-full pt-12 px-8 xl:px-0">
+            {/* <h1 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100">Shopping Cart</h1> */}
+            <div className="mt-4 gap-x-12 lg:grid lg:grid-cols-12 lg:items-start">
+              <div className="lg:col-span-7">
+                {cart.items.length === 0 && (
+									<div className="flex flex-row items-center">
+										<p className="text-neutral-700 dark:text-neutral-100 text-2xl font-light">No items added to cart</p>
+										<Image className="ml-4" width={35} height={35} src="/images/warning_3d.png" alt="empty_cart" />
+									</div>
+                )}
+                <ul>
+                  {cart.items.map((item) => (
+                    <CartItem key={item.id} data={item} />
+                  ))}
+                </ul>
+              </div>
 
-	if (!isMounted) return null
-
-	return (
-		<div>
-			<Container>
-				<div className="px-4 py-16 sm:px-6 lg:px-8">
-					<h1 className="text-3xl font-bold text-black">Shopping Cart</h1>
-					<div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
-						<div className="lg:col-span-7">
-							{cart.items.length === 0 && <p className="text-neutral-500">No items added to cart</p>}
-							<ul>
-								{cart.items.map((item) => (
-									<CartItem 
-										key={item.id}
-										data={item}
-									/>
-								))}
-							</ul>
-						</div>
-
-						<Summary />
-					</div>
-				</div>
-			</Container>
-		</div>
-	)
+              <Summary />
+            </div>
+          </div>
+        </Container>
+      </div>
+    </>
+  );
 }

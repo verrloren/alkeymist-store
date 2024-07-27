@@ -5,6 +5,10 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar/navbar";
 import { ModalProvider } from "../../providers/modal-provider";
 import ToasterProvider from "../../providers/toaster-provider";
+import { ThemeProvider } from "../../providers/theme-provider"
+import { MenuModalProvider } from "../../providers/menu-modal-provider";
+import getCategories from "../../actions/get-categories";
+import { MarqueeComponent } from "@/components/marquee-component";
 
 const DM = DM_Sans({ subsets: ["latin"] })
 
@@ -14,18 +18,34 @@ export const metadata: Metadata = {
 		"Alkeymist is a custom keyboards e-commerce store. We offer a wide range of custom keyboards, keycaps, and accessories.",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
-	children: React.ReactNode;
+	children: React.ReactNode,
 }>) {
+
+
+	const categories = await getCategories();
+		
+
 	return (
 		<html lang="en">
 			<body className={DM.className}>
+				<MarqueeComponent />
 				<ToasterProvider />
 				<ModalProvider />
+				<MenuModalProvider categories={categories} />
 				<Navbar />
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+
+					{children}
+				</ThemeProvider>
+				
 			</body>
 		</html>
 	);

@@ -1,6 +1,193 @@
-@tailwind base;
+	@tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+/* .featured-reverse::before {
+	content: 'Featured Products';
+	position: absolute;
+	bottom: -4rem;
+	left: 5rem;
+	transform: rotate(-90deg);
+	text-transform: uppercase;
+	font-size: 2.2rem;
+	font-weight: 700;
+} */
+
+html, body {
+	overflow-x: hidden;
+	
+}
+
+
+.card:after {  
+  content: "";
+  height: 150px;
+  width: 1px;  
+  position: absolute;  
+  left: -1px;
+  top: 65%;
+  transition: top, opacity;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(
+    transparent,
+    #6366F1,
+		transparent
+  );
+  opacity: 0;
+} 
+
+.card:before {  
+  content: "";
+  height: 150px;
+  width: 1px;  
+  position: absolute;  
+  right: -1px;
+  top: 0%;
+  transition: top, opacity;
+	transition-delay: 100ms;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(
+    transparent,
+    #6366F1,
+		transparent
+  );
+  opacity: 0;
+} 
+/* #4f458b */
+
+.card:after {  
+  top: 40%;
+  opacity: 0;
+}
+.card:before {  
+  top: 0%;
+  opacity: 0;
+}
+
+.card:hover:after {
+  top: 5%;
+  opacity: 1;
+}
+.card:hover:before {
+  top: 30%;
+  opacity: 1;
+}
+
+/* .preordercard:hover .arrow-1:before {
+  animation: a1 1.5s ease-in-out infinite;
+} */
+
+.preorder {
+	clip-path: inset(0 0 0 0);
+	animation: preorder-animation 3s ease-out;
+}
+@keyframes preorder-animation {
+	clip-path: inset(0 0 0 40%);
+}
+
+
+/* .arrow-1 {
+	width:8rem;
+  height:1rem;
+  display: flex;
+}
+.arrow-1:before {
+	content: "";
+  background: currentColor;
+  width:15px;
+	clip-path: polygon(0 10px,calc(100% - 15px) 10px,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,calc(100% - 15px) calc(100% - 10px),0 calc(100% - 10px));
+}
+
+@keyframes a1 {
+  90%,100%{flex-grow: 1}
+} */
+
+.arrow-1 {
+	display: inline-block;
+	padding: 8px 0;
+   &:before {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 3px;
+    background-color: #e1e1e1;
+    top: 50%;
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid #e1e1e1;
+    border-right: 3px solid #e1e1e1;
+    transform: rotate(45deg);
+    top: calc(50% - 5px);
+    position: absolute;
+    right: 1px;
+  }
+}
+
+
+
+/* .arrow-1 {
+  position: relative;
+  display: inline-block;
+  padding: 8px 0;
+   &:before {
+    content: "";
+    display: block;
+    width: 5rem;
+    height: 2px;
+    background-color: #e1e1e1;
+    top: 50%;
+    transition: width 0.5s ease-out;
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #e1e1e1;
+    border-right: 2px solid #e1e1e1;
+    transform: rotate(45deg);
+    top: calc(50% - 5px);
+    position: absolute;
+    right: 1px;
+  }
+  &:hover {
+    cursor: pointer;
+    &:before {
+      width: 8rem;
+    }
+  }
+} */
+
+/* ul li:before {
+  content: "";
+  position: absolute;
+  inset: calc(100% - 3px) 0 0 0;  3px = //the thickness 
+  background: #ce4f20; //the color 
+  scale: 0 1;
+  transition: .3s, translate 0s .3s;
+}
+ul:hover li:before {
+  scale: 1;
+}
+ul li:hover:before {
+  translate: 0;
+  transition: .3s;
+}
+ul:hover li:has(~ li:hover):before {
+  translate: 100% 0;
+  transition: .2s .2s,scale 0s .4s;
+}
+ul:hover li:hover ~ li:before {
+  translate: -100% 0;
+  transition: .2s .2s,scale 0s .4s;
+} */
+
 
   @layer base {
     :root {

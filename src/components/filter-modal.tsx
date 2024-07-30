@@ -74,7 +74,7 @@ export function FilterModal({
   // PRICE INPUTS
 
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
+  const [maxPrice, setMaxPrice] = useState(100);
 
   const handlePriceChange = (minPrice: string, maxPrice: string) => {
     //get current qyery string
@@ -104,7 +104,7 @@ export function FilterModal({
       <div className="mt-4 min-h-[28dvh] w-full md:mt-8 md:min-h-[60dvh] relative">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-lg">{name}</AccordionTrigger>
+            <AccordionTrigger className="text-lg text-neutral-50">{name}</AccordionTrigger>
             <AccordionContent className="text-sm text-neutral-400">
               <div className="flex flex-wrap gap-2">
                 {data.map((filter) => (
@@ -130,7 +130,7 @@ export function FilterModal({
 
           {/* 					PRICE SLIDER				 */}
           <AccordionItem value="item-2" className="w-full">
-            <AccordionTrigger className="text-lg">Price</AccordionTrigger>
+            <AccordionTrigger className="text-lg text-neutral-50">Price</AccordionTrigger>
             <AccordionContent className="h-24 text-sm text-neutral-400">
               <div className="mt-6 flex h-full w-full flex-col items-center justify-center">
                 <Slider

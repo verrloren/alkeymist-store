@@ -75,16 +75,17 @@ export default async function CategoryPage({
               </div> */}
 
               <div className="mt-6 lg:col-span-3 lg:mt-0">
-                {products.length === 0 && filteredProductsByPrice.length === 0 && <NoResults />}
+                {/* {products.length === 0 && filteredProductsByPrice.length === 0 && <NoResults />} */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 
+
 										{searchParams.minPrice && searchParams.maxPrice ? (
-											filteredProductsByPrice.map((product) => (
-												<ProductCard key={product.id} data={product} />
-											)).length === 0 && (
-												<div className="text-neutral-400 text-4xl font-light">
-													No items found. 
-												</div>
+											filteredProductsByPrice.length > 0 ? (
+												filteredProductsByPrice.map((product) => (
+													<ProductCard key={product.id} data={product} />
+												))
+											) : (
+												<p className="text-4xl text-neutral-400 mt-6">No items found.</p>
 											)
 										) : (
 											products.map((product) => (

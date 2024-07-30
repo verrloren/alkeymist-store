@@ -33,7 +33,9 @@ export function MenuModal({ categories }: useMenuModalProps) {
               key={category.id}
             >
               <Link
-                className="text-2xl font-semibold text-neutral-900 transition-colors hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-50"
+                className="text-3xl font-semibold text-neutral-900 
+								transition-colors hover:text-neutral-800 
+								dark:text-neutral-200 dark:hover:text-neutral-50"
                 href={`/category/${category.id}`}
 								onClick={menuModal.onClose}
               >

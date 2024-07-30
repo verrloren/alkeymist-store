@@ -33,7 +33,7 @@ export function MenuModalComponent({
 				</Transition.Child>
 
 
-				<div className="fixed w-full bottom-0 left-0 overflow-y-auto z-50">
+				<div className="fixed  w-full lg:bottom-3 bottom-0 left-0 overflow-y-auto z-50">
 					<div className="flex min-h-full items-center  justify-center p-4 text-center">
 					
 						<Transition.Child
@@ -47,9 +47,9 @@ export function MenuModalComponent({
 						>
 							<Dialog.Panel className="w-full max-w-3xl
 							rounded-lg text-left align-middle">
-								<div className="relative flex w-full min-h-[55dvh] overflow-hidden
-								bg-white dark:bg-[#070707]/90 backdrop-blur-sm px-4 pb-8 pt-14 
-								shadow-2xl sm:px-6 sm:pt-9 md:p-6 lg:p-8 rounded-lg border border-neutral-800">
+								<div className="relative flex w-full min-h-[55dvh] lg:min-h-[80dvh] overflow-hidden
+								bg-white/90 dark:bg-[#070707]/90 backdrop-blur-sm px-4 pb-8 pt-14 
+								shadow-2xl sm:px-6 sm:pt-9 md:p-6 lg:p-8 rounded-lg border border-neutral-50 dark:border-neutral-800">
 									<div className="absolute right-4 top-4">
 										<IconButton onClick={onClose} icon={<X size={15} />} />
 									</div>

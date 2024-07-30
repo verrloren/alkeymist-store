@@ -36,7 +36,7 @@ export function Faq({}: FaqProps) {
           <Button
             variant="default"
             size="lg"
-            className="py-6 w-full font-bold dark:bg-neitral-100
+            className="py-6 dark:border-white/05 mt-4 flex w-full items-center justify-center gap-x-2 bg-black/90 py-5 text-lg text-neutral-100 backdrop-blur-sm hover:bg-black/95 dark:border dark:border-white/5 dark:bg-white/5 dark:text-neutral-50 dark:hover:border-white/15 dark:hover:bg-transparent dark:hover:text-white
 						
 						"
           >

@@ -26,7 +26,11 @@ export function MenuNavbar({ categories }: MenuNavbarProps) {
     <div className="">
       <Button
         onClick={onMenuOpen}
-        className="flex items-center rounded-md bg-neutral-900 px-4 py-1 transition-colors dark:bg-transparent dark:text-neutral-200 dark:shadow-none dark:hover:bg-transparent dark:hover:text-neutral-50"
+        className="flex items-center rounded-md 
+				 bg-transparent shadow-none text-neutral-900 hover:bg-transparent
+				px-4 py-1 transition-colors dark:bg-transparent 
+				dark:text-neutral-200 dark:shadow-none dark:hover:bg-transparent 
+				dark:hover:text-neutral-50"
       >
         <Menu size={18} className="cursor-pointer" />
       </Button>

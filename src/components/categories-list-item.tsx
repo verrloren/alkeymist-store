@@ -41,9 +41,9 @@ export function CategoriesListItem({ title, srcTo }: CategoriesListItemProps) {
 				alt="alt"
 				className="object-cover w-full h-full rounded-lg group-hover:scale-105
 				transition-transform duration-300 ease-in-out"
-			/>
+			/>	
 			<p className="absolute bottom-0 left-2 
-			font-light text-neutral-200 group-hover:text-white
+			font-semilbold text-neutral-200 group-hover:text-white
 			transition-colors">
 				{title}
 			</p>

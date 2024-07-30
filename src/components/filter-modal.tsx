@@ -16,6 +16,7 @@ import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import toast from "react-hot-toast";
 
 interface FilterModalProps {
   sizeValueKey: string;
@@ -41,6 +42,7 @@ export function FilterModal({
 
   const handleRangeChange = (value: any) => {
     setRange(value);
+		handlePriceChange(value[0].toString(), value[1].toString());
   };
 
   // get the selected value from the query string
@@ -74,7 +76,7 @@ export function FilterModal({
   // PRICE INPUTS
 
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(100);
+  const [maxPrice, setMaxPrice] = useState(1000);
 
   const handlePriceChange = (minPrice: string, maxPrice: string) => {
     //get current qyery string
@@ -102,9 +104,14 @@ export function FilterModal({
   return (
     <MenuModalComponent open={filterModal.isOpen} onClose={filterModal.onClose}>
       <div className="mt-4 min-h-[28dvh] w-full md:mt-8 md:min-h-[60dvh] relative">
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-lg text-neutral-50">{name}</AccordionTrigger>
+        <Accordion type="single" collapsible className="w-full ">
+          <AccordionItem 
+						value="item-1" 
+						className="border-b border-neutral-300 dark:border-neutral-800"
+					>
+            <AccordionTrigger className="text-xl text-neutral-900 dark:text-neutral-50">
+						{name}
+						</AccordionTrigger>
             <AccordionContent className="text-sm text-neutral-400">
               <div className="flex flex-wrap gap-2">
                 {data.map((filter) => (
@@ -113,7 +120,7 @@ export function FilterModal({
 											<Button
                       onClick={() => sizesToUrl(filter.id)}
                       className={cn(
-                        "rounded-md border border-neutral-400 bg-neutral-100 text-sm text-neutral-900 hover:bg-neutral-950 hover:text-neutral-50",
+                        "rounded-md border dark:border-white/05 bg-white/10 text-sm backdrop-blur-sm text-neutral-950 dark:hover:bg-transparent dark:text-neutral-50 hover:text-neutral-50",
                         sizeSelectedValue === filter.id &&
                           "bg-neutral-950 text-white",
                       )}
@@ -129,13 +136,18 @@ export function FilterModal({
           </AccordionItem>
 
           {/* 					PRICE SLIDER				 */}
-          <AccordionItem value="item-2" className="w-full">
-            <AccordionTrigger className="text-lg text-neutral-50">Price</AccordionTrigger>
-            <AccordionContent className="h-24 text-sm text-neutral-400">
+          <AccordionItem 
+						value="item-2" 
+						className="w-full border-b border-neutral-300 dark:border-neutral-800"
+					>
+            <AccordionTrigger className="text-xl text-neutral-950  dark:text-neutral-50">
+						Price
+						</AccordionTrigger>
+            <AccordionContent className="h-28 text-sm text-neutral-400">
               <div className="mt-6 flex h-full w-full flex-col items-center justify-center">
                 <Slider
-                  max={1000}
-                  min={0}
+                  max={maxPrice}
+                  min={minPrice}
                   step={1}
                   value={range}
                   onValueChange={handleRangeChange}
@@ -146,9 +158,10 @@ export function FilterModal({
                 {/*	 PRICE INPUTS	 */}
                 <div className="flex h-full w-full items-start gap-x-2">
                   <div className="w-full">
-                    <h3 className="mb-2 block">From</h3>
+                    <h3 className="my-2 block text-neutral-900 dark:text-neutral-400">From</h3>
                     <input
-                      className="w-full rounded-md border p-2"
+                      className="w-full rounded-md border p-2 bg-white 
+											dark:bg-white/10 text-neutral-900 dark:text-neutral-50 dark:border-neutral-800 focus:outline-1 dark:border-white/5 "
                       type="number"
                       value={minPrice}
                       onChange={(e) => {
@@ -158,9 +171,10 @@ export function FilterModal({
                     />
                   </div>
                   <div className="mb-4 w-full">
-                    <h3 className="mb-2 block">To</h3>
+                    <h3 className="my-2 block text-neutral-900 dark:text-neutral-400">To</h3>
                     <input
-                      className="w-full rounded-md border p-2"
+                      className="w-full rounded-md border dark:border-neutral-800 p-2 bg-white dark:bg-white/10 text-neutral-900 dark:border-white/5
+											dark:text-neutral-50"
                       type="number"
                       value={maxPrice}
                       onChange={(e) => {
@@ -175,11 +189,13 @@ export function FilterModal({
           </AccordionItem>
         </Accordion>
         <Button
-				  className="bg-[#fff] text-lg w-full absolute bottom-[3%] left-0"
+				  className=" dark:bg-white/5 backdrop-blur-sm  text-lg w-full h-11 absolute bottom-[3%] left-0 dark:border-white/05 dark:hover:bg-transparent dark:border dark:border-white/5 dark:hover:text-white bg-black/90 hover:bg-black/95
+					 text-neutral-100 dark:text-neutral-50"
           onClick={() => {
             router.push(pathname);
             setMinPrice(0);
-            setMaxPrice(100);
+            setMaxPrice(1000);
+						toast.success("Filters cleared");
           }}
         >
           Clear All

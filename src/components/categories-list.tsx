@@ -20,9 +20,9 @@ export function CategoriesList({ categories }: CategoriesListProps) {
 
 				{categories.map((category) => (
 					<CategoriesListItem 
-					key={category.id} 
-					title={category.name} 
-					srcTo={category.id}
+						key={category.id} 
+						title={category.name} 
+						srcTo={category.id}
 				/>
 				))}
 

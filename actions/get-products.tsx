@@ -10,6 +10,8 @@ interface Query {
 	isFeatured?: boolean;
 	onCarousel?: boolean;
 	onSale?: boolean;
+	price?: string;
+	newprice?: string;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -22,6 +24,8 @@ const getProducts = async (query: Query): Promise<Product[]> => {
 			isFeatured: query.isFeatured,
 			onCarousel: query.onCarousel,
 			onSale: query.onSale,
+			price: query.price,
+			newprice: query.newprice,
 		}
 	})
 

@@ -43,7 +43,7 @@ export function CategoriesListItem({ title, srcTo }: CategoriesListItemProps) {
 				transition-transform duration-300 ease-in-out"
 			/>
 			<p className="absolute bottom-0 left-2 
-			font-semibold text-neutral-300 group-hover:text-neutral-200
+			font-light text-neutral-200 group-hover:text-white
 			transition-colors">
 				{title}
 			</p>

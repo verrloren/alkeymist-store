@@ -26,15 +26,7 @@ export function MenuModal({ categories }: useMenuModalProps) {
     <MenuModalComponent open={menuModal.isOpen} onClose={menuModal.onClose}>
       <div className="mx-4 flex w-full flex-col justify-start">
         <div className="flex w-full flex-col items-start justify-center gap-y-4 pt-4">
-					{/* <form>
-						<input
-							type="text"
-							className="w-2/3 h-10 rounded-md border border-neutral-700 p-2
-							bg-transparent text-neutral-800 focus:bg-transparent
-							focus:border-neutral-900 focus:outline-none dark:text-neutral-300 dark:focus:border-neutral-200"
-							placeholder="Search..."
-						/>
-					</form> */}
+
           {categories?.map((category) => (
             <div
               className="group flex w-1/3 items-center justify-between"

@@ -3,22 +3,22 @@ import getCategory from "../../../../../actions/get-category";
 import getProducts from "../../../../../actions/get-products";
 import getSizes from "../../../../../actions/get-sizes";
 import Billboard from "@/components/billboard";
-import Filter from "./components/filter";
 import { NoResults } from "@/components/ui/no-results";
 import { ProductCard } from "@/components/ui/product-card";
-import { MobileFilters } from "./components/mobile-filters";
-import { Settings2 } from "lucide-react";
+import { FilterButton } from "./components/filter-button";
 import Footer from "@/components/footer";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 export const revalidate = 0;
 
 interface CategoryPageProps {
   params: {
     categoryId: string;
+		price: string;
   };
   searchParams: {
     sizeId: string;
+		minPrice: string;
+		maxPrice: string;
   };
 }
 
@@ -29,10 +29,18 @@ export default async function CategoryPage({
   const products = await getProducts({
     categoryId: params.categoryId,
     sizeId: searchParams.sizeId,
+		price: params.price,
   });
 
   const sizes = await getSizes();
   const category = await getCategory(params.categoryId);
+
+	const filteredProductsByPrice = products.filter((product) => {
+		const price = parseInt(product.price);
+		const minPrice = parseInt(searchParams.minPrice);
+		const maxPrice = parseInt(searchParams.maxPrice);
+		return price >= minPrice && price <= maxPrice;
+	})
 
   return (
     <>
@@ -48,12 +56,13 @@ export default async function CategoryPage({
         {/* </div> */}
 
 
-        <MobileFilters sizes={sizes} />
+      	<FilterButton sizes={sizes} />
 
         <Container>
           <div className="w-full px-4 pt-8 sm:px-6 lg:px-0 lg:pt-0">
             <Billboard data={category.billboard} />
           </div>
+
           <div className="px-4 pb-16 sm:px-6 lg:px-8">
             {/* <div className="md:flex items-center gap-x-1 hidden">
               <Settings2 className="text-neutral-100" />
@@ -66,13 +75,26 @@ export default async function CategoryPage({
               </div> */}
 
               <div className="mt-6 lg:col-span-3 lg:mt-0">
-                {products.length === 0 && <NoResults />}
+                {products.length === 0 && filteredProductsByPrice.length === 0 && <NoResults />}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                  {products.map((product) => (
-                    <ProductCard key={product.id} data={product} />
-                  ))}
+
+										{searchParams.minPrice && searchParams.maxPrice ? (
+											filteredProductsByPrice.map((product) => (
+												<ProductCard key={product.id} data={product} />
+											)).length === 0 && (
+												<div className="text-neutral-400 text-4xl font-light">
+													No items found. 
+												</div>
+											)
+										) : (
+											products.map((product) => (
+												<ProductCard key={product.id} data={product} />
+											))
+										)}
+
                 </div>
               </div>
+							
             </div>
           </div>
         </Container>

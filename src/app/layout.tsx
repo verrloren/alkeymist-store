@@ -9,6 +9,9 @@ import { ThemeProvider } from "../../providers/theme-provider"
 import { MenuModalProvider } from "../../providers/menu-modal-provider";
 import getCategories from "../../actions/get-categories";
 import { MarqueeComponent } from "@/components/marquee-component";
+import { FilterModalProvider } from "../../providers/filter-modal-provider";
+import getSizes from "../../actions/get-sizes";
+import getProducts from "../../actions/get-products";
 
 const DM = DM_Sans({ subsets: ["latin"] })
 
@@ -26,6 +29,11 @@ export default async function RootLayout({
 
 
 	const categories = await getCategories();
+	const sizes = await getSizes();
+	const prices = await getProducts({
+		price: "",
+		newprice: ""
+	});
 		
 
 	return (
@@ -35,6 +43,10 @@ export default async function RootLayout({
 				<ToasterProvider />
 				<ModalProvider />
 				<MenuModalProvider categories={categories} />
+				<FilterModalProvider 
+					sizes={sizes} 
+					prices={prices}
+				/>
 				<Navbar />
 				<ThemeProvider
 					attribute="class"

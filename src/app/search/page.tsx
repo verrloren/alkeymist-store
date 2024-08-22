@@ -1,5 +1,5 @@
 import SearchTable from "@/components/navbar/search-table";
-import { SearchBar } from "@/components/search-bar";
+import SearchBar from "@/components/search-bar";
 import { Container } from "@/components/ui/container";
 import { Suspense } from "react";
 

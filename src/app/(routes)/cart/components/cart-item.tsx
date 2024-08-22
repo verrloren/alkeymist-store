@@ -18,6 +18,8 @@ export function CartItem({ data }: CartItemProps) {
     cart.removeItem(data.id);
   };
 
+	console.log(data);
+	
 
   return (
     <li className={`flex py-6 `}>

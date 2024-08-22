@@ -1,20 +1,22 @@
 'use client'
 
-import { Product } from "@/types/types"
+import useCart from "@/hooks/use-cart";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import { Product } from "@/types/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { MouseEventHandler } from "react";
 import { IconButton } from "./ui/icon-button";
 import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "./ui/currency";
-import usePreviewModal from "@/hooks/use-preview-modal";
-import useCart from "@/hooks/use-cart";
-import { MouseEventHandler } from "react";
+
+
 
 interface SearchTableItemProps {
 	filterProduct: Product
 }
 
-export function SearchTableItem({ filterProduct }: SearchTableItemProps) {
+export default function SearchTableItem({ filterProduct }: SearchTableItemProps) {
 
 	const router = useRouter();
   const previewModal = usePreviewModal();
@@ -46,6 +48,7 @@ export function SearchTableItem({ filterProduct }: SearchTableItemProps) {
 				src={filterProduct?.images?.[0].url}
 				alt={filterProduct.name}
 				className="aspect-square rounded-t-xl object-cover"
+				priority
 			/>
 			<div className="absolute bottom-5 w-full px-6 opacity-0 transition group-hover:opacity-100">
 				<div className="flex justify-center gap-x-6">
@@ -79,7 +82,7 @@ export function SearchTableItem({ filterProduct }: SearchTableItemProps) {
 
 			{filterProduct?.newprice !== '0' ? (
             <div className="mt-1 flex items-center justify-start gap-4">
-              <Currency  value={filterProduct?.newprice} />
+              <Currency value={filterProduct?.newprice} />
               <Currency oldprice value={filterProduct?.price} />
             </div>
           ) : (

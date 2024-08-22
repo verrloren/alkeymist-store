@@ -1,6 +1,6 @@
 
 import getProducts from "../../../actions/get-products";
-import { SearchTableItem } from "../search-table-item";
+import SearchTableItem from "../search-table-item";
 
 
 

@@ -50,24 +50,6 @@ export default async function HomePage() {
               <SalesList items={productsOnSale} />
             </div>
 
-            {/* GROUP BUY & PRE ORDERS */}
-
-            {/* <div className="my-4 mt-20 flex w-full flex-col space-y-10 pb-10">
-              <h1 className="text-5xl font-semibold dark:text-neutral-100">
-                Group-Buys & Pre-Orders
-              </h1>
-
-              <div className="grid grid-cols-1 justify-evenly gap-4 md:grid-cols-2 lg:gap-8">
-                <PreorderCard
-                  headerText="Pre-orders"
-                  imgSrc="/keeb_assets/preorder-curved.svg"
-                />
-                <PreorderCard
-                  headerText="Group-buys"
-                  imgSrc="/keeb_assets/groupbuy.png"
-                />
-              </div>
-            </div> */}
 
             {/* INFO SECTION */}
 

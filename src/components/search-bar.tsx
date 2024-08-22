@@ -3,9 +3,7 @@
 import { Search } from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
-interface SearchBarProps {}
-
-export function SearchBar({}: SearchBarProps) {
+export default function SearchBar() {
 
 	const searchParams = useSearchParams();
 	const pathname = usePathname();

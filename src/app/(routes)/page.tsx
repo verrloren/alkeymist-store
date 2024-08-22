@@ -17,9 +17,6 @@ export default async function HomePage() {
   const productsOnSale = await getProducts({ onSale: true });
   const categories = await getCategories();
 
-	console.log(products);
-	
-
   return (
     <div className="bg-neutral-50 dark:bg-gradient-to-b 
 		dark:from-[#070707] dark:to-neutral-950">

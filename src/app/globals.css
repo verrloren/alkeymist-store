@@ -1,0 +1,263 @@
+	@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+/* .featured-reverse::before {
+	content: 'Featured Products';
+	position: absolute;
+	bottom: -4rem;
+	left: 5rem;
+	transform: rotate(-90deg);
+	text-transform: uppercase;
+	font-size: 2.2rem;
+	font-weight: 700;
+} */
+
+html, body {
+	overflow-x: hidden;
+	
+}
+
+
+.card:after {  
+  content: "";
+  height: 150px;
+  width: 1px;  
+  position: absolute;  
+  left: -1px;
+  top: 65%;
+  transition: top, opacity;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(
+    transparent,
+    #6366F1,
+		transparent
+  );
+  opacity: 0;
+} 
+
+.card:before {  
+  content: "";
+  height: 150px;
+  width: 1px;  
+  position: absolute;  
+  right: -1px;
+  top: 0%;
+  transition: top, opacity;
+	transition-delay: 100ms;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(
+    transparent,
+    #6366F1,
+		transparent
+  );
+  opacity: 0;
+} 
+/* #4f458b */
+
+.card:after {  
+  top: 40%;
+  opacity: 0;
+}
+.card:before {  
+  top: 0%;
+  opacity: 0;
+}
+
+.card:hover:after {
+  top: 5%;
+  opacity: 1;
+}
+.card:hover:before {
+  top: 30%;
+  opacity: 1;
+}
+
+/* .preordercard:hover .arrow-1:before {
+  animation: a1 1.5s ease-in-out infinite;
+} */
+
+.preorder {
+	clip-path: inset(0 0 0 0);
+	animation: preorder-animation 3s ease-out;
+}
+@keyframes preorder-animation {
+	clip-path: inset(0 0 0 40%);
+}
+
+
+/* .arrow-1 {
+	width:8rem;
+  height:1rem;
+  display: flex;
+}
+.arrow-1:before {
+	content: "";
+  background: currentColor;
+  width:15px;
+	clip-path: polygon(0 10px,calc(100% - 15px) 10px,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,calc(100% - 15px) calc(100% - 10px),0 calc(100% - 10px));
+}
+
+@keyframes a1 {
+  90%,100%{flex-grow: 1}
+} */
+
+.arrow-1 {
+	display: inline-block;
+	padding: 8px 0;
+   &:before {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 3px;
+    background-color: #e1e1e1;
+    top: 50%;
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid #e1e1e1;
+    border-right: 3px solid #e1e1e1;
+    transform: rotate(45deg);
+    top: calc(50% - 5px);
+    position: absolute;
+    right: 1px;
+  }
+}
+
+
+
+/* .arrow-1 {
+  position: relative;
+  display: inline-block;
+  padding: 8px 0;
+   &:before {
+    content: "";
+    display: block;
+    width: 5rem;
+    height: 2px;
+    background-color: #e1e1e1;
+    top: 50%;
+    transition: width 0.5s ease-out;
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #e1e1e1;
+    border-right: 2px solid #e1e1e1;
+    transform: rotate(45deg);
+    top: calc(50% - 5px);
+    position: absolute;
+    right: 1px;
+  }
+  &:hover {
+    cursor: pointer;
+    &:before {
+      width: 8rem;
+    }
+  }
+} */
+
+/* ul li:before {
+  content: "";
+  position: absolute;
+  inset: calc(100% - 3px) 0 0 0;  3px = //the thickness 
+  background: #ce4f20; //the color 
+  scale: 0 1;
+  transition: .3s, translate 0s .3s;
+}
+ul:hover li:before {
+  scale: 1;
+}
+ul li:hover:before {
+  translate: 0;
+  transition: .3s;
+}
+ul:hover li:has(~ li:hover):before {
+  translate: 100% 0;
+  transition: .2s .2s,scale 0s .4s;
+}
+ul:hover li:hover ~ li:before {
+  translate: -100% 0;
+  transition: .2s .2s,scale 0s .4s;
+} */
+
+
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 3.9%;
+
+      --card: 0 0% 100%;
+      --card-foreground: 0 0% 3.9%;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 0 0% 3.9%;
+
+      --primary: 0 0% 6%;
+      --primary-foreground: 0 0% 98%;
+
+      --secondary: 0 0% 96.1%;
+      --secondary-foreground: 0 0% 9%;
+
+      --muted: 0 0% 96.1%;
+      --muted-foreground: 0 0% 45.1%;
+
+      --accent: 0 0% 96.1%;
+      --accent-foreground: 0 0% 9%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
+
+      --border: 0 0% 89.8%;
+      --input: 0 0% 89.8%;
+      --ring: 0 0% 3.9%;
+
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 0 0% 3.9%;
+      --foreground: 0 0% 98%;
+
+      --card: 0 0% 3.9%;
+      --card-foreground: 0 0% 98%;
+
+      --popover: 0 0% 3.9%;
+      --popover-foreground: 0 0% 98%;
+
+      --primary: 0 0% 98%;
+      --primary-foreground: 0 0% 9%;
+
+      --secondary: 0 0% 14.9%;
+      --secondary-foreground: 0 0% 98%;
+
+      --muted: 0 0% 14.9%;
+      --muted-foreground: 0 0% 63.9%;
+
+      --accent: 0 0% 14.9%;
+      --accent-foreground: 0 0% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 0 0% 98%;
+
+      --border: 0 0% 14.9%;
+      --input: 0 0% 14.9%;
+      --ring: 0 0% 83.1%;
+    }
+  }
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }

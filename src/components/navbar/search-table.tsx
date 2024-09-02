@@ -6,8 +6,6 @@ import SearchTableItem from "../search-table-item";
 
 export default async function SearchTable({ query }: { query: string }) {
 
-
-
 	const products = await getProducts({  });
 
 	const filteredProducts = products.filter((product) => {

@@ -16,7 +16,7 @@ interface SearchTableItemProps {
 	filterProduct: Product
 }
 
-export default function SearchTableItem({ filterProduct }: SearchTableItemProps) {
+const SearchTableItem = ({ filterProduct }: SearchTableItemProps) => {
 
 	const router = useRouter();
   const previewModal = usePreviewModal();
@@ -94,3 +94,5 @@ export default function SearchTableItem({ filterProduct }: SearchTableItemProps)
 	</div>
 	)
 }
+
+export default SearchTableItem;

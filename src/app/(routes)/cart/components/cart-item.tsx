@@ -18,7 +18,6 @@ export function CartItem({ data }: CartItemProps) {
     cart.removeItem(data.id);
   };
 
-	console.log(data);
 	
 
   return (

@@ -12,7 +12,7 @@ export default async function Navbar() {
   const categories = await getCategories();
 
   return (
-    <nav className="sticky top-0 z-10 w-full border-b border-neutral-200 bg-white py-2 backdrop-blur-md dark:border-b-0 dark:border-t dark:border-neutral-800 dark:bg-[#080808eb]">
+    <nav className="sticky top-0 z-10 w-full border-b border-neutral-200 bg-white py-2 backdrop-blur-md dark:border-b-0 dark:border-t dark:border-neutral-800 dark:bg-[#070707]">
       <Container>
         <div className="relative hidden h-20 items-center justify-between sm:px-6 md:flex lg:px-8 xl:px-0">
           <Logo />

@@ -7,7 +7,7 @@ import ToasterProvider from "../../providers/toaster-provider";
 import ThemeProvider from "../../providers/theme-provider"
 import MenuModalProvider from "../../providers/menu-modal-provider";
 import getCategories from "../../actions/get-categories";
-// import MarqueeComponent from "@/components/marquee-component";
+import MarqueeComponent from "@/components/marquee-component";
 import FilterModalProvider from "../../providers/filter-modal-provider";
 import getSizes from "../../actions/get-sizes";
 import getProducts from "../../actions/get-products";
@@ -38,7 +38,7 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={DM.className}>
-				{/* <MarqueeComponent /> */}
+				<MarqueeComponent />
 				<ToasterProvider />
 				<ModalProvider />
 				<MenuModalProvider categories={categories} />

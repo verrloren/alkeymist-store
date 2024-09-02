@@ -14,7 +14,7 @@ interface FaqProps {}
 
 export function Faq({}: FaqProps) {
   return (
-    <Card className="card shadow-lg xs:h-[32rem] mt-8 flex h-[33rem] w-full flex-col justify-evenly md:h-[30rem]">
+    <Card className="shadow-lg xs:h-[32rem] mt-8 flex h-[33rem] w-full flex-col justify-evenly md:h-[30rem]">
       <div className="flex flex-row items-center xl:px-12">
         <CardHeader>
           <h1 className="text-4xl font-semibold dark:text-neutral-100">

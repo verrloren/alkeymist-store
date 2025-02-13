@@ -1,9 +1,10 @@
 'use client'
 
 import Image from "next/image"
-import { Card, CardContent } from "./ui/card"
 import { useRouter } from "next/navigation"
 import { Arrow } from "./ui/arrow"
+import { motion } from "framer-motion"
+import { staggerItem } from "@/lib/motion-variants"
 
 interface CategoriesListItemProps {
 	title: string
@@ -13,6 +14,8 @@ interface CategoriesListItemProps {
 export function CategoriesListItem({ title, srcTo }: CategoriesListItemProps) {
 
 	const router = useRouter();
+
+
 
 	const handleCategoryRedirect = (): string => {
 		switch (title.toLowerCase()) {
@@ -30,7 +33,9 @@ export function CategoriesListItem({ title, srcTo }: CategoriesListItemProps) {
 	}
 
 	return (
-		<div
+		<motion.div
+			variants={staggerItem}
+			viewport={{ once: true }}
 			onClick={() => router.push(`/category/${srcTo}`)}
 			className="group relative h-44 w-full cursor-pointer overflow-hidden rounded-lg will-change-transform"
 		>
@@ -48,6 +53,6 @@ export function CategoriesListItem({ title, srcTo }: CategoriesListItemProps) {
 				{title}
 			</p>
 			<Arrow />
-		</div>
+		</motion.div>
 	)
 }

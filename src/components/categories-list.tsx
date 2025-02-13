@@ -2,6 +2,8 @@
 
 import { Category } from "@/types/types"
 import { CategoriesListItem } from "./categories-list-item"
+import { motion } from 'framer-motion';
+import { staggerContainer } from "@/lib/motion-variants";
 
 
 
@@ -11,12 +13,15 @@ interface CategoriesListProps {
 
 export function CategoriesList({ categories }: CategoriesListProps) {
 
-	
-
 	return (
 
-			<div className="w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 
-			 gap-x-3 gap-y-2">
+			<motion.div 
+				variants={staggerContainer}
+				initial="hidden"
+				animate="show"
+				className="w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 
+				 gap-x-3 gap-y-2"
+			>
 
 				{categories.map((category) => (
 					<CategoriesListItem 
@@ -26,6 +31,6 @@ export function CategoriesList({ categories }: CategoriesListProps) {
 				/>
 				))}
 
-			</div>
+			</motion.div>
 	)
 }

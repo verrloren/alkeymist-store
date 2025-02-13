@@ -53,6 +53,7 @@ export default async function HomePage() {
 
             {/* INFO SECTION */}
 
+
             <Faq />
 
 						<FillingInfo />
